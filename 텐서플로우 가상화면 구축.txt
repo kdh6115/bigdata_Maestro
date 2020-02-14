@@ -10,3 +10,5 @@ conda install scikit-image
 conda install seaborn
 conda install tensorflow=1.14.0
 jupyter kernel install
+
+conda remove --name tf2_test --all
