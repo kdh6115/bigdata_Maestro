@@ -1,0 +1,36 @@
+Scikits : Machine Learning , Model을 만드는 것이 아니고 있는 Model에 parameter을 추정
+ - 인터페이스의 일관성(한 사람이 관리함)
+ - estimnator
+ - transformer : 전처리한 데이터로 변환하겠다.
+ - fit
+
+Scikits는	문제 해결을 위한 도구
+- simulation
+- optimiztion : 수리적으로 최적화
+- data mining : 데이터 속에서 규칙을 발견, 의사결정을 도와줌
+-> DATA를 통해서 모델을 만들어서 이 모델이 가지고 있는 규칙을 찾음(일반화된 문제를 해결) -> 과대적합이 되어 분산이 커지는 현상이 발생할 수 있음
+==> classfication(분류)
+      Regression(예측)
+     clustering (군집)
+
+모델 기반
+- 정보기반 : DT -> RT -> AdaBoost -> GB -> xG Boost(GPU, 다중언어, ensemble, stacking)
+- 확률기반 : Naive Bays(text mining)_Rnn, 
+- 유사도기반 : KNN, K-means, 추천
+- 오차기반 : ANN, SVM
+
+
+* 복잡한 문제를 해결하는데 쓰이는 것이 tensorflow
+
+
+Feature Engineering
+- 전처리 : 결측치(drop, fillin,0, 평균, 유사도), 이상치, 범주화, 정규화
+- transformation 
+	- select : model select(data를 통해서 model을 select함, training)
+		variable select(변수중요도) - 분산이 큰 변수
+		feature extraction(특성추출) - 
+	- filtering
+	- Data 요약 
+	- arrange
+
+다중공선성 : 독립변수 영

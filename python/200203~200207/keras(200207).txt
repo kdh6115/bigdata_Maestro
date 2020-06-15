@@ -1,0 +1,42 @@
+1. backend - tensorflow, CNTK, Theano => 중에 하나를 backend로 취하고 wrapper시킴
+	   ※ tensorflow를 배우는 이유는 자동화를 하기 위해서
+
+2. constant -variables(가중치) -placeholder(데이터주입)
+=> 행렬연산(오차기반학습) -> loss function, activation, optimizer ->학습
+	=> for문, epoch, batch size를 통해 분류 or 예측
+
+=====> keras는 이 모든 과정을 함수화 해서 실행 - fit(scikit에 영향) 함수 사용
+ 	- compile(loss function, activation, optimizer을 매개변수로 사용)를 통해서 backend를 wrapper시켰음  (우리는 tensorflow 사용)
+
+※ 가중치를 자동으로 구성해주는 것은 dense(출력차수, 입력차수) - tensorflow에서
+    -> variable, placeholder이런 과정을 생략할 수 있음
+
+3. model ( layer 방식으로 만듬 - 가중치 선언을 없앰)
+	- layer을 추가할땐 add만 해주면 자동으로 추가해줌
+	- return 받을 필요가 없다.(이전 layer에서 계산되어진 결과가 자동으로 다음 layer에 들어감)
+	- 가중치 선언을 할 필요가 없다.
+	- 출력 차수만 지정하면 됨
+ § 모델을 만드는 방법
+ 1) sequential : 싱글 input, 싱글 output
+ 2) function : 멀티 input, 멀티 output
+ 3) model : 상속을 받아서 다양하게 사용(class base)
+
+
+- 행렬연산에 필요한 것을 layer로 만들어 놓음(Input, dense, cnn(이미지로 분류와 예측), rnn(텍스트를 통해서 분류와 예측))
+  -> input으로 데이터 받고 dense로 가중치 주면 회귀
+
+데이터 입력 -> fit(epoch, batch size, valuelation data) -> 모델에 적용
+
+evulator(테스트 데이터 넣음)
+predict(실제 데이터)
+
+keras (사이킷트하고 연결) - classifier, regressor로 객체를 만듬 -> pipeline, GridSearchCV 이용해서 loss, activation 등 하이퍼파라미터를 자동으로 튜닝
+
+application을 하는 것은 transfer learning을 하는 것이다.
+※ transfer learning : 처음 부터 가중치를 넣는 것은 오래걸리므로 같은 분야를 pre-training을 통해 미리 가중치를 학습시켜서 빠르게 적합시킴
+
+GRU(망을 줄이면서 만드는 것-회로 3개(forget ,input, output회로-> update회로, ) - seq2seq(incode 망, decode 망, 이 두망을 연결한 state) 효율이 안좋음 -> attention 망을 만듬(자기들끼리의 관계, 가중치 3개(query, key, value)를 가지고 학습))
+ => NNT (seq2seq + attention) => attention x => transformer => BERT
+
+
+프로젝트 할때는 image data(전처리 -> opencv), sound data(전처리 -> librosa), text data(전처리 -> 를 잘 이용해야 한다.
